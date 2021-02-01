@@ -1,16 +1,15 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <cs50.h>
 
 int main(void)
 {
   int height;
   int spaces;
-  //TODO: validate input so letters don't crash program
+  
   //get height from user and verify it is valid
   do
   {
-    printf("Height:\n");
-    scanf("%d", &height);
+    height = get_int("Height: ");
   }
   while(height < 1 || height > 8);
 

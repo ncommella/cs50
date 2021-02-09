@@ -23,7 +23,7 @@ int main (void)
   if (num_length % 2 == 0) isValid = luhnCheck (true, num_length, number);
   else isValid = luhnCheck (false, num_length, number);
 
-  printf("This is a %s cc number.\n", isValid ? "valid" : "INVALID");
+  //DEBUG: printf("This is a %s cc number.\n", isValid ? "valid" : "INVALID");
 
   if (isValid)
     printf("%s\n", typeOfCard(number));
@@ -46,9 +46,9 @@ bool luhnCheck (bool isEvenLength, int length, long number)
 {
   int luhnSum = 0;
 
-  printf("The bool is %s, the length is %d, and the number is %ld\n", isEvenLength ? "true" : "false", length, number);
+  //DEBUG: printf("The bool is %s, the length is %d, and the number is %ld\n", isEvenLength ? "true" : "false", length, number);
 
-  for (int i = 0; i < length; i++)
+  for (int i = length - 1; i >= 0 ; i--)
   {
 		//if number is even length, digits in even position will be doubled, and the reverse for odd length numbers
 		if (isEvenLength)
@@ -65,7 +65,7 @@ bool luhnCheck (bool isEvenLength, int length, long number)
     number = number / 10;
   }
 
-  printf("The luhnSum is: %d\n", luhnSum);
+  //DEBUG: printf("The luhnSum is: %d\n", luhnSum);
 
   // checks if the luhn sum is valid by dividing by ten
   if (luhnSum % 10 == 0)
@@ -82,7 +82,7 @@ string typeOfCard (long number)
     number = number / 10;
   }
 
-  printf("The first digits are: %ld\n", number);
+  //DEBUG: printf("The first digits are: %ld\n", number);
   //determine brand of credit card
   if (number == 34 || number == 37)
     return "AMEX";

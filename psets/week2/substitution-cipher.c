@@ -41,20 +41,30 @@ int main(int argc, string argv[])
 
 void subCipher(string key)
 {
+    //get plain text string from user
     string plainText = get_string("plaintext: ");
+
+
+    printf("ciphertext: ");
     for (int i = 0; i < strlen(plainText); i++)
     {
+        //if the character is non-alpha, just print the character as is
         if (getpos(plainText[i]) < 0)
             printf("%c", plainText[i]);
-        else
+
+        //prints ciphered char according to key in correct case
+        else if (isupper(plainText[i]))
         {
-            printf("%c", key[getpos(plainText[i])]);
+            printf("%c", toupper(key[getpos(plainText[i])]));
         }
+        else
+            printf("%c", tolower(key[getpos(plainText[i])]));
         
     }
     printf("\n");
 }
 
+//finds position of alpha char in 0-indexed alphabet, returns -1 for non-alpha chars
 int getpos(char c)
 {
     int pos;

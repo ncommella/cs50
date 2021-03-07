@@ -150,7 +150,7 @@ void tabulate(void)
             //the first non-eliminated candidate encountered has votes attribute increased and we break up into voters for loop
             if (!candidates[preferences[i][j]].eliminated)
             {
-                candidates[preferences[i][j]].votes++;
+                candidates[preferences[i][j]].votes += 1;
                 break;
             }
         }
@@ -176,6 +176,7 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
+    //min starts higher than max voters
     int min = 101;
 
     for (int i = 0; i < candidate_count; i++)
@@ -183,7 +184,7 @@ int find_min(void)
         if (candidates[i].votes < min && !candidates[i].eliminated)
             min = candidates[i].votes;
     }
-    return 0;
+    return min;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
